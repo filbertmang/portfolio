@@ -1,26 +1,644 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ==========================================================================
+     1. SUBATOMIC / PRIMITIVES (Raw values extracted from filbert.design)
+     ========================================================================== */
+
+  /* Neutral Slate Scale */
+  --ds-primitive-slate-50: #f9fcff;
+  --ds-primitive-slate-100: #f2f7fa;
+  --ds-primitive-slate-200: #e6ecf0;
+  --ds-primitive-slate-300: #d3dce3;
+  --ds-primitive-slate-400: #b0becc;
+  --ds-primitive-slate-500: #8294a6;
+  --ds-primitive-slate-600: #525862;
+  --ds-primitive-slate-700: #484c52;
+  --ds-primitive-slate-800: #1b1d1f;
+  --ds-primitive-slate-900: #0d1926;
+  --ds-primitive-slate-950: #070e17;
+
+  /* Forest Scale (Teck / Sustainability / Success) */
+  --ds-primitive-forest-50: #fbfffb;
+  --ds-primitive-forest-100: #e9f7ed;
+  --ds-primitive-forest-300: #9fe0ad;
+  --ds-primitive-forest-500: #00880f;
+  --ds-primitive-forest-700: #306539;
+  --ds-primitive-forest-900: #224728;
+
+  /* Cyan Scale (AI / Technology / Mint) */
+  --ds-primitive-cyan-50: #fbffff;
+  --ds-primitive-cyan-100: #e9f7f7;
+  --ds-primitive-cyan-200: #e9f5f7;
+  --ds-primitive-cyan-300: #e6eaeb;
+  --ds-primitive-cyan-500: #2dccd3;
+  --ds-primitive-cyan-700: #306365;
+  --ds-primitive-cyan-800: #305b65;
+  --ds-primitive-cyan-900: #224647;
+
+  /* Berry Scale (7shifts / Design Systems / Hot Pink) */
+  --ds-primitive-berry-50: #fffbfe;
+  --ds-primitive-berry-100: #f7e9f4;
+  --ds-primitive-berry-200: #f1daec;
+  --ds-primitive-berry-300: #e4a7d4;
+  --ds-primitive-berry-500: #df0173;
+  --ds-primitive-berry-700: #65305a;
+  --ds-primitive-berry-800: #65305c;
+  --ds-primitive-berry-900: #472240;
+
+  /* Royal Scale (WillowTree / Visier / Medium / Navy) */
+  --ds-primitive-royal-50: #fdfeff;
+  --ds-primitive-royal-100: #e6e8fa;
+  --ds-primitive-royal-200: #e4f3f9;
+  --ds-primitive-royal-300: #b5bdf0;
+  --ds-primitive-royal-500: #0e107c;
+  --ds-primitive-royal-700: #313266;
+  --ds-primitive-royal-800: #223547;
+  --ds-primitive-royal-900: #222347;
+
+  /* Amber Scale (Highlights / Warmth / Apricot) */
+  --ds-primitive-amber-50: #fdf1ea;
+  --ds-primitive-amber-100: #fae1d2;
+  --ds-primitive-amber-300: #f5b187;
+  --ds-primitive-amber-500: #ff6808;
+  --ds-primitive-amber-700: #994e1f;
+  --ds-primitive-amber-900: #5a2a0c;
+
+  /* ==========================================================================
+     2. ATOMIC / SEMANTIC ROLES (Light Mode Default)
+     ========================================================================== */
+
+  /* Surfaces */
+  --ds-surface-canvas: var(--ds-primitive-slate-50);
+  --ds-surface-elevated: #ffffff;
+  --ds-surface-muted: var(--ds-primitive-slate-100);
+  --ds-surface-active: var(--ds-primitive-slate-200);
+
+  /* Content / Typography */
+  --ds-content-primary: var(--ds-primitive-slate-900);
+  --ds-content-secondary: var(--ds-primitive-slate-700);
+  --ds-content-tertiary: var(--ds-primitive-slate-600);
+  --ds-content-subtle: var(--ds-primitive-slate-400);
+  --ds-content-inverse: #ffffff;
+
+  /* Strokes / Borders */
+  --ds-stroke-subtle: rgba(176, 190, 204, 0.25);
+  --ds-stroke-default: var(--ds-primitive-slate-400);
+  --ds-stroke-strong: var(--ds-primitive-slate-900);
+
+  /* Categorical Badges */
+  --ds-badge-forest-bg: var(--ds-primitive-forest-100);
+  --ds-badge-forest-text: var(--ds-primitive-forest-700);
+  --ds-badge-forest-border: var(--ds-primitive-forest-500);
+
+  --ds-badge-cyan-bg: var(--ds-primitive-cyan-100);
+  --ds-badge-cyan-text: var(--ds-primitive-cyan-700);
+  --ds-badge-cyan-border: var(--ds-primitive-cyan-500);
+
+  --ds-badge-berry-bg: var(--ds-primitive-berry-100);
+  --ds-badge-berry-text: var(--ds-primitive-berry-700);
+  --ds-badge-berry-border: var(--ds-primitive-berry-500);
+
+  --ds-badge-royal-bg: var(--ds-primitive-royal-100);
+  --ds-badge-royal-text: var(--ds-primitive-royal-700);
+  --ds-badge-royal-border: var(--ds-primitive-royal-500);
+
+  --ds-badge-amber-bg: var(--ds-primitive-amber-50);
+  --ds-badge-amber-text: var(--ds-primitive-amber-700);
+  --ds-badge-amber-border: var(--ds-primitive-amber-700);
+
+  --ds-badge-neutral-bg: var(--ds-primitive-slate-100);
+  --ds-badge-neutral-text: var(--ds-primitive-slate-700);
+  --ds-badge-neutral-border: var(--ds-primitive-slate-300);
+
+  /* Legacy & Global Variable Aliases (Seamless ObsidianUI & Hairline UI Integration) */
+  --site-header-height: 52px;
+  --site-chrome: var(--ds-surface-canvas);
+  --background: var(--ds-surface-elevated);
+  --foreground: var(--ds-content-primary);
+  --primary: var(--ds-content-primary);
+  --primary-foreground: var(--ds-content-inverse);
+  --border: var(--ds-stroke-default);
+  --muted-foreground: var(--ds-content-subtle);
+  --accent: var(--ds-surface-muted);
+  --ring: var(--ds-primitive-slate-400);
+
+  --font-jakarta: var(--font-jakarta, "Plus Jakarta Sans", system-ui, -apple-system, sans-serif);
+  --font-inter: var(--font-inter, system-ui, -apple-system, sans-serif);
+  --font-geist: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
+}
+
+/* ==========================================================================
+   DARK THEME ATOMIC OVERRIDES
+   ========================================================================== */
+.dark {
+  /* Surfaces */
+  --ds-surface-canvas: var(--ds-primitive-slate-950);
+  --ds-surface-elevated: var(--ds-primitive-slate-900);
+  --ds-surface-muted: var(--ds-primitive-slate-800);
+  --ds-surface-active: var(--ds-primitive-slate-700);
+
+  /* Content */
+  --ds-content-primary: var(--ds-primitive-slate-50);
+  --ds-content-secondary: var(--ds-primitive-slate-200);
+  --ds-content-tertiary: var(--ds-primitive-slate-400);
+  --ds-content-subtle: var(--ds-primitive-slate-500);
+  --ds-content-inverse: var(--ds-primitive-slate-950);
+
+  /* Strokes */
+  --ds-stroke-subtle: rgba(176, 190, 204, 0.15);
+  --ds-stroke-default: rgba(176, 190, 204, 0.35);
+  --ds-stroke-strong: var(--ds-primitive-slate-400);
+
+  /* Categorical Badges */
+  --ds-badge-forest-bg: rgba(0, 136, 15, 0.18);
+  --ds-badge-forest-text: #74e283;
+  --ds-badge-forest-border: rgba(0, 136, 15, 0.4);
+
+  --ds-badge-cyan-bg: rgba(45, 204, 211, 0.18);
+  --ds-badge-cyan-text: #62e4ea;
+  --ds-badge-cyan-border: rgba(45, 204, 211, 0.4);
+
+  --ds-badge-berry-bg: rgba(223, 1, 115, 0.18);
+  --ds-badge-berry-text: #f972b2;
+  --ds-badge-berry-border: rgba(223, 1, 115, 0.4);
+
+  --ds-badge-royal-bg: rgba(14, 16, 124, 0.3);
+  --ds-badge-royal-text: #a4abff;
+  --ds-badge-royal-border: rgba(14, 16, 124, 0.5);
+
+  --ds-badge-amber-bg: rgba(255, 104, 8, 0.18);
+  --ds-badge-amber-text: #ffaa70;
+  --ds-badge-amber-border: rgba(255, 104, 8, 0.4);
+
+  --ds-badge-neutral-bg: var(--ds-primitive-slate-800);
+  --ds-badge-neutral-text: var(--ds-primitive-slate-200);
+  --ds-badge-neutral-border: var(--ds-primitive-slate-700);
+
+  /* Legacy & Global Variable Aliases */
+  --site-chrome: var(--ds-surface-canvas);
+  --background: var(--ds-surface-elevated);
+  --foreground: var(--ds-content-primary);
+  --primary: var(--ds-content-primary);
+  --primary-foreground: var(--ds-content-inverse);
+  --border: var(--ds-stroke-default);
+  --muted-foreground: var(--ds-content-subtle);
+  --accent: var(--ds-surface-muted);
+  --ring: var(--ds-primitive-slate-400);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-surface-canvas: var(--ds-surface-canvas);
+  --color-surface-elevated: var(--ds-surface-elevated);
+  --color-surface-muted: var(--ds-surface-muted);
+  --color-surface-active: var(--ds-surface-active);
+
+  --color-content-primary: var(--ds-content-primary);
+  --color-content-secondary: var(--ds-content-secondary);
+  --color-content-tertiary: var(--ds-content-tertiary);
+  --color-content-subtle: var(--ds-content-subtle);
+  --color-content-inverse: var(--ds-content-inverse);
+
+  --color-stroke-subtle: var(--ds-stroke-subtle);
+  --color-stroke-default: var(--ds-stroke-default);
+  --color-stroke-strong: var(--ds-stroke-strong);
+
+  --color-badge-forest-bg: var(--ds-badge-forest-bg);
+  --color-badge-forest-text: var(--ds-badge-forest-text);
+  --color-badge-forest-border: var(--ds-badge-forest-border);
+
+  --color-badge-cyan-bg: var(--ds-badge-cyan-bg);
+  --color-badge-cyan-text: var(--ds-badge-cyan-text);
+  --color-badge-cyan-border: var(--ds-badge-cyan-border);
+
+  --color-badge-berry-bg: var(--ds-badge-berry-bg);
+  --color-badge-berry-text: var(--ds-badge-berry-text);
+  --color-badge-berry-border: var(--ds-badge-berry-border);
+
+  --color-badge-royal-bg: var(--ds-badge-royal-bg);
+  --color-badge-royal-text: var(--ds-badge-royal-text);
+  --color-badge-royal-border: var(--ds-badge-royal-border);
+
+  --color-badge-amber-bg: var(--ds-badge-amber-bg);
+  --color-badge-amber-text: var(--ds-badge-amber-text);
+  --color-badge-amber-border: var(--ds-badge-amber-border);
+
+  --font-sans: var(--font-inter);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--ds-surface-canvas);
+  color: var(--ds-content-primary);
+  font-family: var(--font-inter), var(--font-geist), sans-serif;
+  transition: background-color 0.22s, color 0.22s;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-overflow-scrolling: touch;
 }
+
+/* Site Header Styles */
+.site-header {
+  z-index: 40;
+  height: var(--site-header-height);
+  background: var(--site-chrome);
+  color: var(--foreground);
+  font-family: var(--font-geist), var(--font-inter), sans-serif;
+  isolation: isolate;
+  align-items: center;
+  transition: background-color 0.22s, color 0.22s;
+  display: flex;
+  position: sticky;
+  top: 0;
+  overflow-x: clip;
+}
+
+.site-header-panel {
+  z-index: -2;
+  border: 1px solid var(--border);
+  background: var(--background);
+  border-bottom: 0;
+  border-right: 0;
+  border-radius: 14px 0 0;
+  transition: background-color 0.22s, border-color 0.22s;
+  position: absolute;
+  inset: 6px 0 0 240px;
+}
+
+.dark .site-header-panel {
+  background: var(--site-chrome);
+}
+
+.site-header-left-join {
+  z-index: -1;
+  pointer-events: none;
+  width: 258px;
+  height: 8px;
+  position: absolute;
+  bottom: 0;
+  left: -16px;
+}
+
+.site-header-curve {
+  z-index: -1;
+  pointer-events: none;
+  width: 470px;
+  height: 36px;
+  position: absolute;
+  top: 6.5px;
+  right: 8.5px;
+  overflow: visible;
+}
+
+.site-brand {
+  width: 240px;
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: -0.055em;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px 6px;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-brand img {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  translate: 0 2px;
+}
+
+.site-brand > span {
+  translate: 0 3px;
+}
+
+.site-header-navigation {
+  flex: 1;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 0 14px;
+  display: flex;
+}
+
+.site-header-navigation nav {
+  gap: 4px;
+  display: flex;
+}
+
+.site-header-navigation nav a,
+.site-templates {
+  min-height: 32px;
+  color: var(--muted-foreground);
+  border-radius: 999px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 9px;
+  font-size: 12px;
+  display: inline-flex;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.site-header-navigation nav a {
+  border-radius: 8px;
+}
+
+.site-header-navigation a:hover,
+.site-header-navigation a[aria-current="page"],
+.site-templates:hover,
+.site-templates[aria-current="page"] {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+.site-header-search button {
+  border-radius: 999px;
+  justify-content: center;
+  width: 36px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.site-header-search button > span,
+.site-header-search button > kbd {
+  display: none;
+}
+
+.site-header-actions {
+  flex-shrink: 0;
+  justify-content: flex-end;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 6px 18px 0 0;
+  display: flex;
+}
+
+.site-header-github {
+  min-width: 60px;
+}
+
+.site-header-github a,
+.site-header-actions > button {
+  border-radius: 999px;
+}
+
+.site-header-divider {
+  background: var(--border);
+  opacity: 0.6;
+  width: 1px;
+  height: 16px;
+}
+
+.site-builder {
+  min-height: 32px;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  border-radius: 6px;
+  align-items: center;
+  padding-inline: 8px;
+  font-size: 12px;
+  display: inline-flex;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.site-builder:hover {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+.site-header a:focus-visible,
+.site-menu a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+.site-menu-trigger {
+  display: none;
+}
+
+.site-menu {
+  font-family: var(--font-geist), var(--font-inter), sans-serif;
+}
+
+.site-menu-links {
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 16px;
+  display: flex;
+}
+
+.site-menu-links a {
+  color: var(--muted-foreground);
+  border-radius: 8px;
+  padding: 12px;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.site-menu-links a:hover,
+.site-menu-links a[aria-current="page"] {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+.site-menu-footer {
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding: 20px 16px;
+  font-size: 14px;
+  display: flex;
+}
+
+.site-theme-toggle {
+  flex-shrink: 0;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background-color 0.15s;
+}
+
+.site-theme-toggle:hover {
+  background: var(--accent);
+}
+
+.site-theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.22s, opacity 0.18s;
+  position: absolute;
+}
+
+.site-theme-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.site-theme-moon {
+  opacity: 1;
+  fill: currentColor;
+  transform: rotate(0) scale(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header-github svg,
+  .site-header-search svg {
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .site-header-github a:is(:hover, :focus-visible) svg,
+  .site-header-search button:is(:hover, :focus-visible) svg {
+    transform: rotate(-8deg) scale(1.08);
+  }
+  .site-header button:active {
+    scale: 0.96;
+  }
+}
+
+.dark .site-theme-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+.dark .site-theme-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+@media (max-width: 1099px) {
+  .site-header-navigation nav {
+    display: none;
+  }
+  .site-menu-trigger {
+    display: inline-flex;
+  }
+  .site-header-curve {
+    width: 512px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --site-header-height: 56px;
+  }
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    gap: 4px;
+    padding-inline: 12px;
+  }
+  .site-header-panel,
+  .site-header-left-join,
+  .site-header-curve,
+  .site-header-github,
+  .site-header-divider,
+  .site-builder {
+    display: none;
+  }
+  .site-brand {
+    flex: 1;
+    gap: 6px;
+    width: auto;
+    min-width: 0;
+    padding: 0;
+    font-size: 20px;
+  }
+  .site-brand img {
+    width: 24px;
+    height: 24px;
+  }
+  .site-header-navigation {
+    flex: 0 0 32px;
+    gap: 0;
+    padding: 0;
+  }
+  .site-header-actions {
+    align-self: center;
+    gap: 2px;
+    height: auto;
+    padding: 0;
+  }
+  .site-templates {
+    min-height: 40px;
+    padding: 0 6px;
+    font-size: 12px;
+    line-height: 1;
+    translate: 0 3px;
+  }
+  .site-header-search button {
+    width: 32px;
+  }
+  .site-header-search button,
+  .site-header-actions > button {
+    height: 40px;
+  }
+}
+
+@media (max-width: 419px) {
+  .site-header {
+    gap: 2px;
+    padding-inline: 10px;
+  }
+  .site-templates {
+    padding: 0 4px;
+  }
+  .site-templates[href="/templates"] {
+    display: none;
+  }
+}
+
+@media (max-width: 359px) {
+  .site-brand img {
+    display: none;
+  }
+  .site-brand {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header-panel,
+  .site-theme-toggle svg {
+    transition: none;
+  }
+}
+
+@keyframes airplaneCloudDrift {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+

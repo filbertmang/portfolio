@@ -1,0 +1,15 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_151_602)">
+<rect x="0.321247" y="-0.00986086" width="37.7164" height="11.5895" rx="5.79473" transform="matrix(0.674016 -0.738717 0.718055 0.695986 6.937 28.3541)" fill="#202020" stroke="#202020" stroke-width="0.461538"/>
+<rect x="0.321247" y="-0.00986086" width="30.5267" height="11.5895" rx="5.79473" transform="matrix(0.674016 -0.738717 0.718055 0.695986 19.5674 40.5961)" fill="#202020" stroke="#202020" stroke-width="0.461538"/>
+<circle cx="6.0255" cy="6.0255" r="5.79473" transform="matrix(0.674016 -0.738717 0.718055 0.695986 32.0854 52.6039)" fill="#202020" stroke="#202020" stroke-width="0.461538"/>
+<rect x="0.321247" y="-0.00986086" width="37.7164" height="11.5895" rx="5.79473" transform="matrix(0.674016 -0.738717 0.718055 0.695986 8.7827 27.4311)" fill="white" stroke="#202020" stroke-width="0.461538"/>
+<rect x="0.321247" y="-0.00986086" width="30.5267" height="11.5895" rx="5.79473" transform="matrix(0.674016 -0.738717 0.718055 0.695986 21.4131 39.6731)" fill="white" stroke="#202020" stroke-width="0.461538"/>
+<circle cx="6.0255" cy="6.0255" r="5.79473" transform="matrix(0.674016 -0.738717 0.718055 0.695986 33.9312 51.6808)" fill="white" stroke="#202020" stroke-width="0.461538"/>
+</g>
+<defs>
+<clipPath id="clip0_151_602">
+<rect width="60" height="60" fill="white"/>
+</clipPath>
+</defs>
+</svg>
