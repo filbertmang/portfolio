@@ -15,6 +15,7 @@ import {
   Briefcase,
   User,
   FlaskConical,
+  CreditCard,
   ArrowUpRight,
 } from "lucide-react";
 import { usePrototypeControl } from "@/components/prototype-control";
@@ -29,14 +30,22 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "Float Card", href: "/float-card" },
+  { label: "Float Card v2", href: "/float-card-v2" },
+  { label: "Liquid Glass", href: "/liquid-glass" },
   { label: "Experiment", href: "/experiment" },
+  { label: "Hanging", href: "/hanging" },
   { label: "About", href: "/about" },
   { label: "Studio", href: "https://filbert.studio/", external: true },
 ];
 
 const SEARCH_ITEMS = [
   { group: "Navigation", name: "Home", href: "/", icon: Sparkles, external: false },
+  { group: "Navigation", name: "Float Card (Water Shader & Spend Request)", href: "/float-card", icon: CreditCard, external: false },
+  { group: "Navigation", name: "Float Card v2 (VGPU Holographic & Clear Water)", href: "/float-card-v2", icon: Sparkles, external: false },
+  { group: "Navigation", name: "Liquid Glass (Dynamic Glassmorphic Controls)", href: "/liquid-glass", icon: Sparkles, external: false },
   { group: "Navigation", name: "Experiment", href: "/experiment", icon: FlaskConical, external: false },
+  { group: "Navigation", name: "Hanging (Hanging Cards Prototype)", href: "/hanging", icon: Sparkles, external: false },
   { group: "Navigation", name: "About (Flight Plan & Resume)", href: "/about", icon: User, external: false },
   { group: "Navigation", name: "Studio (filbert.studio)", href: "https://filbert.studio/", icon: ExternalLink, external: true },
   { group: "Work Experience", name: "Float — Senior Product Designer", href: "/work/float", icon: Briefcase, external: false },
@@ -57,19 +66,34 @@ export function SiteHeader() {
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Default state is light mode (open airplane window), and sync with document.documentElement
+  // Sync initial theme with localStorage and document.documentElement
   useEffect(() => {
-    document.documentElement.classList.remove("dark");
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") {
+      document.documentElement.classList.add("dark");
+      setIsDark(true);
+      setShadeProgress(1);
+    } else if (saved === "light") {
+      document.documentElement.classList.remove("dark");
+      setIsDark(false);
+      setShadeProgress(0);
+    } else {
+      const isCurrentlyDark = document.documentElement.classList.contains("dark");
+      setIsDark(isCurrentlyDark);
+      setShadeProgress(isCurrentlyDark ? 1 : 0);
+    }
 
     const observer = new MutationObserver(() => {
-      setIsDark(document.documentElement.classList.contains("dark"));
+      const darkNow = document.documentElement.classList.contains("dark");
+      setIsDark(darkNow);
+      setShadeProgress(darkNow ? 1 : 0);
     });
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
     });
     return () => observer.disconnect();
-  }, []);
+  }, [setShadeProgress]);
 
   // Keyboard shortcut for Escape to close modals
   useEffect(() => {

@@ -1227,7 +1227,70 @@ function PrototypeControlInner() {
               </div>
 
               {/* ================================================================
-                  CARD 2B: CALENDLY FLEX BUBBLES & LIQUID TABS TOOLKIT
+                  CARD 2B: FLOAT CARD V2 · VGPU HOLOGRAPHIC & CLEAR WATER
+                  ================================================================ */}
+              <div className="rounded-[15px] bg-[#161618] border border-white/[0.06] p-3 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-xs font-semibold tracking-tight text-zinc-100">
+                      Float Card v2 · VGPU Holographic
+                    </span>
+                  </div>
+                  <Link
+                    href="/float-card-v2"
+                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/20 transition-colors"
+                  >
+                    Open /float-card-v2 &rarr;
+                  </Link>
+                </div>
+
+                <p className="text-[11px] text-zinc-400 leading-relaxed">
+                  Official Float CAD Visa design (Image 2), VGPU holographic diffraction foil on hover (Image 1), and one-time subtle transparent optical water.
+                </p>
+
+                <div className="flex items-center justify-between pt-1 border-t border-white/[0.05]">
+                  <span className="text-[11px] text-zinc-400">Shader Engine</span>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/[0.06] text-zinc-300">
+                    VGPU (WebGPU) + WebGL
+                  </span>
+                </div>
+              </div>
+
+              {/* ================================================================
+                  CARD 2C: FLOAT CARD · WATER SHADER & SPEND REQUEST
+                  ================================================================ */}
+              <div className="rounded-[15px] bg-[#161618] border border-white/[0.06] p-3 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-sky-400" />
+                    <span className="text-xs font-semibold tracking-tight text-zinc-100">
+                      Float Card · Water Edition
+                    </span>
+                  </div>
+                  <Link
+                    href="/float-card"
+                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 hover:bg-sky-500/20 border border-sky-500/20 transition-colors"
+                  >
+                    Open /float-card &rarr;
+                  </Link>
+                </div>
+
+                <p className="text-[11px] text-zinc-400 leading-relaxed">
+                  Real-time WebGL seascape water shader, branching fractures, lacy seafoam shorelines &amp;{" "}
+                  <code className="font-mono text-zinc-200">∞</code> lagoon channel on Float&apos;s corporate card.
+                </p>
+
+                <div className="flex items-center justify-between pt-1 border-t border-white/[0.05]">
+                  <span className="text-[11px] text-zinc-400">Shader Pipeline</span>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/[0.06] text-zinc-300">
+                    FBM + Seascape + Caustics
+                  </span>
+                </div>
+              </div>
+
+              {/* ================================================================
+                  CARD 2C: CALENDLY FLEX BUBBLES & LIQUID TABS TOOLKIT
                   ================================================================ */}
               <div className="rounded-[15px] bg-[#161618] border border-white/[0.06] p-3 space-y-2.5">
                 <div className="flex items-center justify-between">
@@ -1253,6 +1316,37 @@ function PrototypeControlInner() {
                   <span className="text-[11px] text-zinc-400">Bridge Fillet Anatomy</span>
                   <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/[0.06] text-zinc-300">
                     Bézier C(t)
+                  </span>
+                </div>
+              </div>
+
+              {/* ================================================================
+                  CARD 2C: HANGING TEAM CARDS (FRAMER REPLICATION)
+                  ================================================================ */}
+              <div className="rounded-[15px] bg-[#161618] border border-white/[0.06] p-3 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+                    <span className="text-xs font-semibold tracking-tight text-zinc-100">
+                      Hanging Team Cards
+                    </span>
+                  </div>
+                  <Link
+                    href="/hanging"
+                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 hover:bg-purple-500/20 border border-purple-500/20 transition-colors"
+                  >
+                    Open /hanging &rarr;
+                  </Link>
+                </div>
+
+                <p className="text-[11px] text-zinc-400 leading-relaxed">
+                  Interactive profile cards suspended from curved wire rail with real-time pendulum physics, 3D tilt, holographic foil shimmer, and card flip inspection.
+                </p>
+
+                <div className="flex items-center justify-between pt-1 border-t border-white/[0.05]">
+                  <span className="text-[11px] text-zinc-400">Physics Engine</span>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/[0.06] text-zinc-300">
+                    RAF Pendulum + 3D
                   </span>
                 </div>
               </div>

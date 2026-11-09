@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "../components/hanging/hanging.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   /* ==========================================================================
@@ -115,11 +118,18 @@
   --site-header-height: 52px;
   --site-chrome: var(--ds-surface-canvas);
   --background: var(--ds-surface-elevated);
+  --stage: var(--ds-surface-canvas);
+  --card: var(--ds-surface-elevated);
+  --popover: var(--ds-surface-elevated);
   --foreground: var(--ds-content-primary);
+  --control-foreground: var(--ds-content-primary);
   --primary: var(--ds-content-primary);
   --primary-foreground: var(--ds-content-inverse);
   --border: var(--ds-stroke-default);
   --muted-foreground: var(--ds-content-subtle);
+  --control: var(--ds-surface-muted);
+  --control-hover: var(--ds-surface-active);
+  --control-selected: var(--ds-content-primary);
   --accent: var(--ds-surface-muted);
   --ring: var(--ds-primitive-slate-400);
 
@@ -178,21 +188,35 @@
   /* Legacy & Global Variable Aliases */
   --site-chrome: var(--ds-surface-canvas);
   --background: var(--ds-surface-elevated);
+  --stage: var(--ds-surface-canvas);
+  --card: var(--ds-surface-elevated);
+  --popover: var(--ds-surface-elevated);
   --foreground: var(--ds-content-primary);
+  --control-foreground: var(--ds-content-primary);
   --primary: var(--ds-content-primary);
   --primary-foreground: var(--ds-content-inverse);
   --border: var(--ds-stroke-default);
   --muted-foreground: var(--ds-content-subtle);
+  --control: var(--ds-surface-muted);
+  --control-hover: var(--ds-surface-active);
+  --control-selected: var(--ds-content-primary);
   --accent: var(--ds-surface-muted);
   --ring: var(--ds-primitive-slate-400);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-stage: var(--stage);
+  --color-card: var(--card);
+  --color-popover: var(--popover);
   --color-foreground: var(--foreground);
+  --color-control-foreground: var(--control-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-muted-foreground: var(--muted-foreground);
+  --color-control: var(--control);
+  --color-control-hover: var(--control-hover);
+  --color-control-selected: var(--control-selected);
   --color-accent: var(--accent);
   --color-border: var(--border);
   --color-ring: var(--ring);

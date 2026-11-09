@@ -44,6 +44,31 @@ interface PrototypeControlContextValue {
 
 const DEFAULT_OPTIONS: DesignOption[] = [
   {
+    id: "float-card-v2",
+    label: "Float Card v2 · VGPU Holographic & Clear Water",
+    description: "Official Float silver CAD card (Image 2) with VGPU diffraction foil on hover (Image 1) and transparent optics",
+  },
+  {
+    id: "float-card-limestone",
+    label: "Float Card v1 · Weathered Stone + Ocean",
+    description: "Exact 00:00 → 00:08 video replication with Float glyph, branching fractures & ∞ water lagoon",
+  },
+  {
+    id: "float-card-glacial",
+    label: "Float Card · Glacial Ice (Spend Request)",
+    description: "Float Spend Request (?type=new_card) layout on frosted glacial slate with bioluminescent water",
+  },
+  {
+    id: "float-card-navy",
+    label: "Float Card · Midnight Navy Corporate",
+    description: "Signature #0D1926 Float corporate card surface with deep ocean caustics & VISA commercial mark",
+  },
+  {
+    id: "hanging-cards",
+    label: "Hanging Team Cards · Pendulum Motion",
+    description: "Suspended profile cards with dynamic sway, 3D tilt, and holographic foil shimmer replicated from Framer",
+  },
+  {
     id: "calendly-flex-bubble",
     label: "Calendly Flex Bubbles · Liquid Tabs",
     description: "Modular squircle capsules connected with concave Bézier bridges & Hairline UI liquid surface tension",
@@ -125,8 +150,9 @@ export function PrototypeControlProvider({ children }: { children: React.ReactNo
     setIsOpen((prev) => !prev);
   }, []);
 
-  // Global Cmd+K / Ctrl+K shortcut to trigger Prototype Control
+  // Global Cmd+K / Ctrl+K shortcut to trigger Prototype Control (disabled in production)
   useEffect(() => {
+    if (process.env.NODE_ENV === "production") return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
